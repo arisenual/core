@@ -7,7 +7,7 @@ export enum UALErrorType {
   Logout = 'Logout',
   Signing = 'Signing',
   Validation = 'Validation',
-  Initialization = 'Initialization',  // Covers situations like Scatter.connect, module not loading, etc.
+  Initialization = 'Initialization',  // Covers situations like PeepsID.connect, module not loading, etc.
   DataRequest = 'DataRequest',        // Errors fetching data like accountName, keys, etc.
   Unsupported = 'Unsupported',        // Thrown from an unsupported operation
 }

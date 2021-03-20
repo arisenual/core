@@ -8,8 +8,8 @@ class TestUser extends User {
   public getRpcEndpointString(endpoint: RpcEndpoint): string {
     return this.buildRpcEndpoint(endpoint);
   }
-  public getEosjsTransaction(wasBroadcast: boolean, completedTransaction: any): SignTransactionResponse {
-    return this.returnEosjsTransaction(wasBroadcast, completedTransaction)
+  public getArisenSdkTransaction(wasBroadcast: boolean, completedTransaction: any): SignTransactionResponse {
+    return this.returnArisenSdkTransaction(wasBroadcast, completedTransaction)
   }
   public signTransaction(transaction: any, config?: SignTransactionConfig): Promise<SignTransactionResponse> {
     throw new Error(`Method not implemented: ${transaction}, ${config}`);
@@ -107,7 +107,7 @@ describe('User', () => {
     })
 
     it('if the transaction was not broadcast', () => {
-      expect(user.getEosjsTransaction(false, transaction).hasOwnProperty('transaction')).toEqual(true)
+      expect(user.getArisenSdkTransaction(false, transaction).hasOwnProperty('transaction')).toEqual(true)
     })
 
     it('if the transaction was broadcast and contains a transaction id', () => {
@@ -117,7 +117,7 @@ describe('User', () => {
           status: 'ok'
         }
       }
-      expect(user.getEosjsTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
+      expect(user.getArisenSdkTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
     })
 
     it('if the transaction was broadcast and contains an error code', () => {
@@ -126,11 +126,11 @@ describe('User', () => {
       transaction.error = {
         name: 'my error'
       }
-      expect(user.getEosjsTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
+      expect(user.getArisenSdkTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
     })
 
     it('if the transaction was broadcast and contains neither a transaction id nor an error code', () => {
-      expect(user.getEosjsTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
+      expect(user.getArisenSdkTransaction(true, transaction).hasOwnProperty('transaction')).toEqual(true)
     })
   })
 });

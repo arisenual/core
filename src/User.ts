@@ -32,7 +32,7 @@ export abstract class User {
 
   public abstract getKeys(): Promise<string[]>
 
-  protected returnEosjsTransaction(wasBroadcast: boolean, completedTransaction: any): SignTransactionResponse {
+  protected returnArisenSdkTransaction(wasBroadcast: boolean, completedTransaction: any): SignTransactionResponse {
     if (wasBroadcast) {
       if (completedTransaction.hasOwnProperty('transaction_id')) {
         return {
